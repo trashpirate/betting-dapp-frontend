@@ -9,7 +9,7 @@ export default function CountdownTimer() {
   const [endTimeString, setEndTimeString] = useState<Date | null>(null);
 
   useEffect(() => {
-    fetch("http://localhost:3001/get-round")
+    fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/get-round`)
       .then((res) => res.json())
       .then((data) => {
         data.status == false ? setEndTime(null) : setEndTime(Number(new Date(data.end)) / 1000);
@@ -18,12 +18,12 @@ export default function CountdownTimer() {
     setInitialTime(currentTime);
 
     // Create a WebSocket connection to the backend
-    const socket = io("http://localhost:3001");
+    const socket = io(`${process.env.NEXT_PUBLIC_BASE_URL}`);
 
     // Listen for the "bettingStarted" event
     socket.on("bettingStarted", () => {
       console.log("Betting round has started");
-      fetch("http://localhost:3001/get-round")
+      fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/get-round`)
         .then((res) => res.json())
         .then((data) => {
           data.status == false ? setEndTime(null) : setEndTime(Number(new Date(data.end)) / 1000);
@@ -34,7 +34,7 @@ export default function CountdownTimer() {
 
     socket.on("bettingEnded", () => {
       console.log("Betting round has ended");
-      fetch("http://localhost:3001/get-round")
+      fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/get-round`)
         .then((res) => res.json())
         .then((data) => {
           data.status == false ? setEndTime(null) : setEndTime(Number(new Date(data.end)) / 1000);

@@ -1,14 +1,14 @@
 import styles from "./bettingInfo.module.css";
 
-import { tokenABI } from "../../assets/TokenABI";
+import { tokenABI } from "../../assets/LICK_ethereum";
 import { useContractReads } from "wagmi";
 import { formatUnits, parseUnits } from "viem";
 import { useEffect, useState } from "react";
 
-const TOKEN_CONTRACT = "0x855DA24d2Fc7Ef7AaCF29B3d027eC70Ab11947DF";
-const UP_ADDRESS = "0x582b25a263c46004B0A476A78ECFf7aE7E2034a0";
-const DOWN_ADDRESS = "0x6652c1F62F8a1907f4F2a9b5f557ec62e7978050";
-const NETWORK_SCAN = "https://goerli.etherscan.io/tx";
+const TOKEN_CONTRACT = process.env.NEXT_PUBLIC_TOKEN_CONTRACT as `0x${string}`;
+const UP_ADDRESS = process.env.NEXT_PUBLIC_UP_ADDRESS as `0x${string}`;
+const DOWN_ADDRESS = process.env.NEXT_PUBLIC_DOWN_ADDRESS as `0x${string}`;
+const NETWORK_SCAN = process.env.NEXT_PUBLIC_NETWORK_SCAN;
 
 export default function BettingInfo() {
   const { data, isError, isLoading } = useContractReads({

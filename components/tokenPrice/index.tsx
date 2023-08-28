@@ -8,7 +8,7 @@ export default function TokenPrice() {
   const [initialPrice, setInitialPrice] = useState<number | null>(null);
 
   useEffect(() => {
-    const socket = io("http://localhost:3001");
+    const socket = io(`${process.env.NEXT_PUBLIC_BASE_URL}`);
 
     socket.on("connect", function () {
       console.log("Connected");
@@ -25,7 +25,7 @@ export default function TokenPrice() {
 
     // Listen for the "bettingStarted" event
     socket.on("bettingStarted", () => {
-      fetch("http://localhost:3001/get-round")
+      fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/get-round`)
         .then((res) => res.json())
         .then((data) => {
           data.status == false ? setInitialPrice(null) : setInitialPrice(data.initialPrice);
@@ -34,7 +34,7 @@ export default function TokenPrice() {
 
     // Listen for the "bettingStarted" event
     socket.on("bettingEnded", () => {
-      fetch("http://localhost:3001/get-round")
+      fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/get-round`)
         .then((res) => res.json())
         .then((data) => {
           data.status == false ? setInitialPrice(null) : setInitialPrice(data.initialPrice);
