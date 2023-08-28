@@ -11,6 +11,7 @@
 
 .container {
   max-width: 300px;
+  min-height: 250px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

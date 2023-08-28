@@ -1,8 +1,9 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { io } from "socket.io-client";
 import style from "./tokenPrice.module.css";
 
 export default function TokenPrice() {
+  const document = useRef();
   const [currentPrice, setCurrentPrice] = useState<number | null>(null);
   const [initialPrice, setInitialPrice] = useState<number | null>(null);
 
@@ -54,31 +55,53 @@ export default function TokenPrice() {
     };
   }, [initialPrice, currentPrice]);
 
-  if (currentPrice != null && initialPrice != null) {
-    if (currentPrice > initialPrice) {
-      document.documentElement.style.setProperty("--is_up", `15px solid green`);
-      document.documentElement.style.setProperty("--is_down", `0px`);
-      document.documentElement.style.setProperty("--price", `green`);
-    } else if (currentPrice == initialPrice) {
-      document.documentElement.style.setProperty("--is_up", `10px`);
-      document.documentElement.style.setProperty("--is_down", `10px`);
-      document.documentElement.style.setProperty("--price", `black`);
+  const getArrowStyle = () => {
+    if (currentPrice != null && initialPrice != null) {
+      if (currentPrice > initialPrice) {
+        return {
+          borderBottom: `15px solid green`,
+          borderTop: `0px`,
+        };
+      } else if (currentPrice === initialPrice) {
+        return {
+          borderBottom: `10px`,
+          borderTop: `10px`,
+        };
+      } else {
+        return {
+          borderBottom: `0px`,
+          borderTop: `15px solid red`,
+        };
+      }
     } else {
-      document.documentElement.style.setProperty("--is_up", `0px`);
-      document.documentElement.style.setProperty("--is_down", `15px solid red`);
-      document.documentElement.style.setProperty("--price", `red`);
+      return {
+        borderBottom: `10px`,
+        borderTop: `10px`,
+      };
     }
-  } else {
-    document.documentElement.style.setProperty("--is_up", `10px`);
-    document.documentElement.style.setProperty("--is_down", `10px`);
-    document.documentElement.style.setProperty("--price", `black`);
-  }
+  };
+
+  const getPriceColorStyle = () => {
+    if (currentPrice != null && initialPrice != null) {
+      if (currentPrice > initialPrice) {
+        return { color: "green" };
+      } else if (currentPrice === initialPrice) {
+        return { color: "black" };
+      } else {
+        return { color: "red" };
+      }
+    } else {
+      return { color: "black" };
+    }
+  };
 
   return (
     <div className={style.container}>
       <h1>$LICK Price</h1>
       {currentPrice !== null ? (
-        <p className={style.current_price}>Current price of LICK is ${currentPrice.toFixed(8)}</p>
+        <p className={style.current_price} style={getPriceColorStyle()}>
+          Current price of LICK is ${currentPrice.toFixed(8)}
+        </p>
       ) : (
         <p>Loading token price...</p>
       )}
@@ -87,7 +110,7 @@ export default function TokenPrice() {
       ) : (
         <p>Initial price of LICK not set.</p>
       )}
-      <div className={style.arrow}></div>
+      <div className={style.arrow} style={getArrowStyle()}></div>
     </div>
   );
 }
