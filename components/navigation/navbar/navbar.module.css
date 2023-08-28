@@ -1,0 +1,13 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60%;
+  gap: 2rem;
+  margin: 2rem auto 2rem auto;
+}
+
+.alchemy_logo {
+  width: 6rem;
+  cursor: pointer;
+}
