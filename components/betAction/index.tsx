@@ -1,6 +1,6 @@
 import styles from "./betAction.module.css";
 
-import { tokenABI } from "../../assets/LICK_ethereum";
+import { tokenABI } from "../../assets/LICK_polygon";
 import { useState } from "react";
 import { useContractWrite, usePrepareContractWrite, useWaitForTransaction } from "wagmi";
 import { parseUnits } from "viem";
@@ -56,14 +56,12 @@ export default function BetAction(params: { action: string }) {
           Successfully Submitted!
           <a target={"_blank"} href={`${NETWORK_SCAN}/${data?.hash}`}>
             <div>
-              <p>View on Etherscan</p>
+              <p>View on Polygonscan</p>
             </div>
           </a>
         </div>
       )}
-      {isError && (
-        <div className={styles.error_message}>Error: {error?.message} Error occured.</div>
-      )}
+      {isError && <div className={styles.error_message}>Error: Transaction aborted.</div>}
     </div>
   );
 }
