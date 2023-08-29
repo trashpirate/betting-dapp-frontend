@@ -64,7 +64,7 @@ export default function BettingInfo() {
 
   return (
     <div className={styles.container}>
-      <h3>{`Price Pool: ${total}`} </h3>
+      <h3>{`$LICK Prize Pool: ${total}`} </h3>
       <PieChart data={chartData} />
     </div>
   );

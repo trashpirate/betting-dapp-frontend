@@ -8,7 +8,7 @@ import CountdownTimer from "@/components/countdown";
 export default function Home() {
   return (
     <main className={styles.main}>
-      <h3 className={styles.notice}>V1 BETA</h3>
+      <h3 className={styles.notice}>V1.1 BETA</h3>
       <TokenPrice></TokenPrice>
       <CountdownTimer />
       <Betting></Betting>
