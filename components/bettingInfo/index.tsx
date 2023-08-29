@@ -8,7 +8,6 @@ import { useEffect, useState } from "react";
 const TOKEN_CONTRACT = process.env.NEXT_PUBLIC_TOKEN_CONTRACT as `0x${string}`;
 const UP_ADDRESS = process.env.NEXT_PUBLIC_UP_ADDRESS as `0x${string}`;
 const DOWN_ADDRESS = process.env.NEXT_PUBLIC_DOWN_ADDRESS as `0x${string}`;
-const NETWORK_SCAN = process.env.NEXT_PUBLIC_NETWORK_SCAN;
 
 export default function BettingInfo() {
   const { data, isError, isLoading } = useContractReads({
