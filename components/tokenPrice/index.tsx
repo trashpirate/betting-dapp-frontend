@@ -25,7 +25,9 @@ export default function TokenPrice() {
 
     // Listen for the "bettingStarted" event
     socket.on("bettingStarted", () => {
-      fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/get-round`)
+      fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/get-round`, {
+        credentials: "include",
+      })
         .then((res) => res.json())
         .then((data) => {
           data.status == false ? setInitialPrice(null) : setInitialPrice(data.initialPrice);
@@ -34,7 +36,9 @@ export default function TokenPrice() {
 
     // Listen for the "bettingStarted" event
     socket.on("bettingEnded", () => {
-      fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/get-round`)
+      fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/get-round`, {
+        credentials: "include",
+      })
         .then((res) => res.json())
         .then((data) => {
           data.status == false ? setInitialPrice(null) : setInitialPrice(data.initialPrice);
