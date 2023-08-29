@@ -61,9 +61,7 @@ export default function BetAction(params: { action: string }) {
           </a>
         </div>
       )}
-      {isError && (
-        <div className={styles.error_message}>Error: {error?.message} Error occured.</div>
-      )}
+      {isError && <div className={styles.error_message}>Error: Transaction aborted.</div>}
     </div>
   );
 }
