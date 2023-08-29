@@ -32,18 +32,18 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <title>PetLFG Apps</title>
       <meta
         name="description"
-        content="The PetLFG Betting Platform allows $LICK holders to use their tokens to place bets on future price movements."
+        content="The LICK Betting Platform allows $LICK holders to use their tokens to place bets on future price movements."
         key="desc"
       />
 
       <meta name="twitter:card" content="summary_large_image" key="twcard" />
       <meta name="twitter:creator" content="PetLFG" key="twhandle" />
 
-      <meta property="og:title" content="PetLFG Betting Platform" key="ogtitle" />
+      <meta property="og:title" content="LICK Betting Platform" key="ogtitle" />
       <meta property="og:site_name" content="PetLFG Apps" key="ogsitename" />
       <meta
         property="og:description"
-        content="The PetLFG Betting Platform allows $LICK holders to use their tokens to place bets on future price movements."
+        content="The LICK Betting Platform allows $LICK holders to use their tokens to place bets on future price movements."
         key="ogdesc"
       />
       <meta property="og:url" content="https://petlfg.vercel.app" key="ogurl" />
