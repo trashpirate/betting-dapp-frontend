@@ -1,4 +1,5 @@
 import styles from "./bettingInfo.module.css";
+import PieChart from "./chart";
 
 import { tokenABI } from "../../assets/LICK_polygon";
 import { useContractReads } from "wagmi";
@@ -51,21 +52,23 @@ export default function BettingInfo() {
 
   if (isLoading) return <div className={styles.message}>Fetching results…</div>;
   if (isError) return <div className={styles.error_message}>Error fetching contract data</div>;
+
+  const chartData = {
+    labels: ["UP", "DOWN"],
+    datasets: [
+      {
+        label: "Bets",
+        data: [balanceUp, balanceDown],
+        backgroundColor: ["rgb(14, 207, 143)", "rgb(240, 31, 94)"],
+        hoverOffset: 4,
+      },
+    ],
+  };
+
   return (
     <div className={styles.container}>
-      <div className={styles.result_container}>
-        <div className={styles.progressbar}>
-          <span className={styles.progressbar_up}></span>
-        </div>
-        <div className={styles.progress_count}>{`Up: ${balanceUp}`}</div>
-      </div>
-
-      <div className={styles.result_container}>
-        <div className={styles.progressbar}>
-          <span className={styles.progressbar_down}></span>
-        </div>
-        <div className={styles.progress_count}>{`Down: ${balanceDown}`}</div>
-      </div>
+      <h3>{`Price Pool: ${total}`} </h3>
+      <PieChart data={chartData} />
     </div>
   );
 }

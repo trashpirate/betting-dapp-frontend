@@ -10,12 +10,12 @@
 }
 
 .container {
-  max-width: 200px;
+  max-width: 500px;
   min-height: 250px;
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 20px auto;
+  flex-direction: column;
+  justify-content: center;
+  margin: 30px auto;
 }
 
 .result_container {
