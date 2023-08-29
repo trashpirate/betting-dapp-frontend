@@ -58,7 +58,7 @@
 }
 
 .error_message {
-  padding: 20px 0px;
+  padding: 20px auto;
   color: red;
   text-align: center;
 }

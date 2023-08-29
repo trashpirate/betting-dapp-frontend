@@ -1,6 +1,6 @@
 "use client";
 import { WagmiConfig, createConfig } from "wagmi";
-import { mainnet } from "wagmi/chains";
+import { polygon } from "wagmi/chains";
 import { ConnectKitProvider, getDefaultConfig } from "connectkit";
 import Navbar from "@/components/navigation/navbar";
 import Footer from "@/components/navigation/footer";
@@ -11,7 +11,7 @@ const config = createConfig(
     alchemyId: process.env.ALCHEMY_API_KEY, // or infuraId
     walletConnectProjectId: "709b868768299cf075eb120164a46225",
 
-    chains: [mainnet],
+    chains: [polygon],
     // Required
     appName: "Betting Dapp",
 
