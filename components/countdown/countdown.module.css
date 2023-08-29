@@ -2,3 +2,14 @@
   text-align: center;
   margin: 5px auto;
 }
+
+.countdown {
+  padding-top: 30px;
+}
+
+.notice {
+  max-width: 350px;
+  text-align: center;
+  margin: 5px auto;
+  font-size: 16px;
+}

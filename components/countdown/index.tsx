@@ -97,7 +97,10 @@ export default function CountdownTimer() {
         <br />
         {endTimeString == null ? "Not available." : endTimeString.toLocaleString()}
       </h2>
-      <h2>
+      <p className={style.notice}>
+        For bets to count enter them at least 1 hour before round end time.
+      </p>
+      <h2 className={style.countdown}>
         Time Remaining: <br />
         {formatTime(remainingTime || 0)}
       </h2>
