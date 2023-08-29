@@ -2,7 +2,7 @@ import styles from "./bettingInfo.module.css";
 import PieChart from "./chart";
 
 import { tokenABI } from "../../assets/LICK_polygon";
-import { useContractReads } from "wagmi";
+import { useContractEvent, useContractReads } from "wagmi";
 import { formatUnits, parseUnits } from "viem";
 import { useEffect, useState } from "react";
 
@@ -26,6 +26,7 @@ export default function BettingInfo() {
         args: [DOWN_ADDRESS],
       },
     ],
+    watch: true,
   });
 
   const [hydrated, setHydrated] = useState(false);
@@ -45,10 +46,6 @@ export default function BettingInfo() {
   const total = balanceDown + balanceUp;
   const down = (balanceDown / total) * 100;
   const up = (balanceUp / total) * 100;
-
-  // const percent_up = getComputedStyle(document.documentElement).getPropertyValue("--percent-up");
-  document.documentElement.style.setProperty("--percent-up", `${up.toString()}%`);
-  document.documentElement.style.setProperty("--percent-down", `${down.toString()}%`);
 
   if (isLoading) return <div className={styles.message}>Fetching results…</div>;
   if (isError) return <div className={styles.error_message}>Error fetching contract data</div>;

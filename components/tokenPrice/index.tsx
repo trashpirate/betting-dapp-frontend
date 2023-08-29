@@ -63,7 +63,7 @@ export default function TokenPrice() {
     if (currentPrice != null && initialPrice != null) {
       if (currentPrice > initialPrice) {
         return {
-          borderBottom: `15px solid green`,
+          borderBottom: `15px solid rgb(14, 207, 143)`,
           borderTop: `0px`,
         };
       } else if (currentPrice === initialPrice) {
@@ -74,7 +74,7 @@ export default function TokenPrice() {
       } else {
         return {
           borderBottom: `0px`,
-          borderTop: `15px solid red`,
+          borderTop: `15px solid rgb(240, 31, 94)`,
         };
       }
     } else {
@@ -88,11 +88,11 @@ export default function TokenPrice() {
   const getPriceColorStyle = () => {
     if (currentPrice != null && initialPrice != null) {
       if (currentPrice > initialPrice) {
-        return { color: "green" };
+        return { color: "rgb(14, 207, 143)" };
       } else if (currentPrice === initialPrice) {
         return { color: "black" };
       } else {
-        return { color: "red" };
+        return { color: "rgb(240, 31, 94)" };
       }
     } else {
       return { color: "black" };

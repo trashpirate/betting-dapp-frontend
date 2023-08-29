@@ -1,6 +1,7 @@
 .main {
-  padding: 2rem 0;
+  /* padding: 2rem 0; */
   justify-self: center;
+  margin: 30px auto;
 }
 
 .notice {

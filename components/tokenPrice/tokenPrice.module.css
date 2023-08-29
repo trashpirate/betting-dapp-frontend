@@ -1,6 +1,7 @@
 .container {
   text-align: center;
   margin: 20px auto;
+  max-width: 80%;
 }
 
 .arrow {

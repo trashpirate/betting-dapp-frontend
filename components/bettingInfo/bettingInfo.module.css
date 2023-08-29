@@ -10,11 +10,10 @@
 }
 
 .container {
-  max-width: 500px;
-  min-height: 250px;
-  display: flex;
+
+  /* display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: center; */
   margin: 30px auto;
 }
 
@@ -72,5 +71,10 @@
   }
 }
 
-.progress_count {
+.chart_container {
+  /* position: relative; */
+  text-align: center;
+  margin: 10px auto;
+   /* width: 80%; */
+   height: 30vh;
 }
