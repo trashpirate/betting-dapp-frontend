@@ -27,33 +27,31 @@ const config = createConfig(
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <Head>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta charSet="utf-8" />
-        <title>PetLFG Betting Platform</title>
-        <meta
-          name="description"
-          content="The PetLFG Betting Platform allows $LICK holders to use their tokens to place bets on future price movements."
-          key="desc"
-        />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <meta charSet="utf-8" />
+      <title>PetLFG Betting Platform</title>
+      <meta
+        name="description"
+        content="The PetLFG Betting Platform allows $LICK holders to use their tokens to place bets on future price movements."
+        key="desc"
+      />
 
-        <meta name="twitter:card" content="summary" key="twcard" />
-        <meta name="twitter:creator" content="PetLFG" key="twhandle" />
+      <meta name="twitter:card" content="summary" key="twcard" />
+      <meta name="twitter:creator" content="PetLFG" key="twhandle" />
 
-        <meta property="og:title" content="PetLFG Betting Platform" key="ogtitle" />
-        <meta property="og:site_name" content="PetLFG Betting" key="ogsitename" />
-        <meta
-          property="og:description"
-          content="The PetLFG Betting Platform allows $LICK holders to use their tokens to place bets on future price movements."
-          key="ogdesc"
-        />
-        <meta property="og:url" content="https://petlfg.vercel.app" key="ogurl" />
-        <meta
-          property="og:image"
-          content="http://petlfg.com/wp-content/uploads/2023/08/petlfg_betting_wide.png"
-          key="ogimage"
-        />
-      </Head>
+      <meta property="og:title" content="PetLFG Betting Platform" key="ogtitle" />
+      <meta property="og:site_name" content="PetLFG Betting" key="ogsitename" />
+      <meta
+        property="og:description"
+        content="The PetLFG Betting Platform allows $LICK holders to use their tokens to place bets on future price movements."
+        key="ogdesc"
+      />
+      <meta property="og:url" content="https://petlfg.vercel.app" key="ogurl" />
+      <meta
+        property="og:image"
+        content="http://petlfg.com/wp-content/uploads/2023/08/petlfg_betting_wide.png"
+        key="ogimage"
+      />
       <WagmiConfig config={config}>
         <ConnectKitProvider mode="dark">
           <body>
