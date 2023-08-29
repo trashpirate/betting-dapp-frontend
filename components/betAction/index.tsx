@@ -46,10 +46,6 @@ export default function BetAction(params: { action: string }) {
         <button className={styles.button} disabled={!write || isLoading} onClick={() => write?.()}>
           {isLoading ? "Submitting..." : `Bet ${params.action}`}
         </button>
-        <div className={styles.betting_wallet}>
-          <p>or send bet in $LICK to Polygon address:</p>
-          <p>{walletAddress}</p>
-        </div>
       </div>
       {isSuccess && (
         <div className={styles.message}>
