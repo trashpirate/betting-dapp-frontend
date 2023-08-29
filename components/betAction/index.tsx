@@ -47,7 +47,7 @@ export default function BetAction(params: { action: string }) {
           {isLoading ? "Submitting..." : `Bet ${params.action}`}
         </button>
         <div className={styles.betting_wallet}>
-          <p>or send bet amount to:</p>
+          <p>or send bet to Polygon address:</p>
           <p>{walletAddress}</p>
         </div>
       </div>

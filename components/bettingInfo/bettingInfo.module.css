@@ -10,7 +10,7 @@
 }
 
 .container {
-  max-width: 300px;
+  max-width: 200px;
   min-height: 250px;
   display: flex;
   flex-direction: row;

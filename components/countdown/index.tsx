@@ -93,12 +93,12 @@ export default function CountdownTimer() {
   return (
     <div className={style.timer_container}>
       <h2>
-        Target Time:
+        Round Ending:
         <br />
         {endTimeString == null ? "Not available." : endTimeString.toLocaleString()}
       </h2>
       <h2>
-        Remaining Time: <br />
+        Time Remaining: <br />
         {formatTime(remainingTime || 0)}
       </h2>
     </div>

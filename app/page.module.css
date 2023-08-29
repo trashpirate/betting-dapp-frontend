@@ -2,3 +2,9 @@
   padding: 2rem 0;
   justify-self: center;
 }
+
+.notice {
+  font-weight: 400;
+  text-align: center;
+  margin: 5px auto 50px auto;
+}

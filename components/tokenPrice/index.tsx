@@ -102,17 +102,18 @@ export default function TokenPrice() {
   return (
     <div className={style.container}>
       <h1>$LICK Price</h1>
-      {currentPrice !== null ? (
-        <p className={style.current_price} style={getPriceColorStyle()}>
-          Current price of LICK is ${currentPrice.toFixed(8)}
-        </p>
-      ) : (
-        <p>Loading token price...</p>
-      )}
+
       {initialPrice !== null ? (
-        <p>Initial price of LICK is ${initialPrice.toFixed(8)}</p>
+        <h3>Starting price: ${initialPrice.toFixed(8)}</h3>
       ) : (
-        <p>Initial price of LICK not set.</p>
+        <p>Starting price not set.</p>
+      )}
+      {currentPrice !== null ? (
+        <h3 className={style.current_price} style={getPriceColorStyle()}>
+          Current price: ${currentPrice.toFixed(8)}
+        </h3>
+      ) : (
+        <p>Loading price...</p>
       )}
       <div className={style.arrow} style={getArrowStyle()}></div>
     </div>

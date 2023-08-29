@@ -10,10 +10,17 @@
   border-right: 15px solid transparent;
   border-bottom: var(--is_up);
   border-top: var(--is_down);
-  margin: 25px auto;
+  margin: 10px auto;
 }
 
 .current_price {
   font-weight: 600;
   color: var(--price);
+  padding: 5px;
+}
+
+.initial_price {
+  font-weight: 600;
+  color: var(--price);
+  padding: 5px;
 }
