@@ -47,7 +47,8 @@ export default function BettingCard({ prizePool, ratioUp, ratioDown }: PoolProps
       })
         .then((res) => res.json())
         .then((data) => {
-          data.status == false ? setInitialPrice(null) : setInitialPrice(data.initialPrice);
+          setCurrentPrice(data.currentPrice); // Update the received data
+          setInitialPrice(data.initialPrice);
         });
     });
 

@@ -3,6 +3,7 @@ import styles from "./betAction.module.css";
 import { tokenABI } from "../../assets/LICK_polygon";
 import { useContractWrite, usePrepareContractWrite, useWaitForTransaction } from "wagmi";
 import { parseUnits } from "viem";
+import { useEffect, useState } from "react";
 
 const TOKEN_CONTRACT = process.env.NEXT_PUBLIC_TOKEN_CONTRACT as `0x${string}`;
 const UP_ADDRESS = process.env.NEXT_PUBLIC_UP_ADDRESS as `0x${string}`;
@@ -25,10 +26,23 @@ export default function BetButton(params: { action: string; transferAmount: stri
     hash: data?.hash,
   });
 
+  const getButtonColor = () => {
+    if (params.action === "UP") {
+      return { background: "rgb(14, 207, 143)" };
+    } else {
+      return { background: "rgb(240, 31, 94)" };
+    }
+  };
+
   return (
     <div>
       <div>
-        <button className={styles.button} disabled={!write || isLoading} onClick={() => write?.()}>
+        <button
+          className={styles.button}
+          style={getButtonColor()}
+          disabled={!write || isLoading}
+          onClick={() => write?.()}
+        >
           {isLoading ? "Submitting..." : `Bet ${params.action}`}
         </button>
       </div>
