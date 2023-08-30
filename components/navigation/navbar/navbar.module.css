@@ -2,12 +2,39 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 60%;
-  gap: 2rem;
+  flex-wrap: wrap-reverse;
+  width: 50%;
   margin: 2rem auto 2rem auto;
+  text-align: center;
 }
 
-.alchemy_logo {
-  width: 6rem;
-  cursor: pointer;
+.navbar_menu {
+  display: flex;
+  flex-wrap: wrap;
+  vertical-align: middle;
+  width: 50%;
+  
+}
+
+.navbar_menu a{
+  margin: auto 0px;
+  padding-right: 20px;
+}
+
+@media (max-width: 420px) {
+  .navbar {
+    justify-content: center;
+  }
+
+  .navbar_menu {
+    margin-top: 20px;
+    justify-content: center;
+  }
+
+  .navbar_menu a{
+  /* padding-right: 20px; */
+  min-width: 150px;
+  margin: 5px auto 10px auto;
+  padding: 0px;
+}
 }
