@@ -82,14 +82,6 @@ export default function CountdownTimer() {
       .padStart(2, "0")} min ${seconds.toString().padStart(2, "0")} sec`;
   };
 
-  // if (initialTime === null || endTime === null) {
-  //   return (
-  //     <div className={style.timer_container}>
-  //       <h2>Betting hasn't started yet.</h2>
-  //     </div>
-  //   );
-  // }
-
   return (
     <div className={style.timer_container}>
       {initialTime === null || endTime === null ? (
