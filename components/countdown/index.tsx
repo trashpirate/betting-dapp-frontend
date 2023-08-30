@@ -82,29 +82,38 @@ export default function CountdownTimer() {
       .padStart(2, "0")} min ${seconds.toString().padStart(2, "0")} sec`;
   };
 
-  if (initialTime === null || endTime === null) {
-    return (
-      <div className={style.timer_container}>
-        <h2>Betting hasn't started yet.</h2>
-      </div>
-    );
-  }
+  // if (initialTime === null || endTime === null) {
+  //   return (
+  //     <div className={style.timer_container}>
+  //       <h2>Betting hasn't started yet.</h2>
+  //     </div>
+  //   );
+  // }
 
   return (
     <div className={style.timer_container}>
-      <h1>CURRENT ROUND</h1>
-      <h2>
-        Round Ending:
-        <br />
-        {endTimeString == null ? "Not available." : endTimeString.toLocaleString()}
-      </h2>
-      <p className={style.notice}>
-        For bets to count enter them at least 1 hour before round end time.
-      </p>
-      <h2 className={style.countdown}>
-        Time Remaining: <br />
-        {formatTime(remainingTime || 0)}
-      </h2>
+      {initialTime === null || endTime === null ? (
+        <div>
+          <h1>CURRENT ROUND</h1>
+          <h2>Finished.</h2>
+        </div>
+      ) : (
+        <div>
+          <h1>CURRENT ROUND</h1>
+          <h2>
+            Round Ending:
+            <br />
+            {endTimeString == null ? "Not available." : endTimeString.toLocaleString()}
+          </h2>
+          <p className={style.notice}>
+            For bets to count enter them at least 1 hour before round end time.
+          </p>
+          <h2 className={style.countdown}>
+            Time Remaining: <br />
+            {formatTime(remainingTime || 0)}
+          </h2>
+        </div>
+      )}
     </div>
   );
 }
