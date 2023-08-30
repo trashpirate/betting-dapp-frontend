@@ -7,8 +7,7 @@ export default function Betting() {
     <div className={styles.container}>
       <BettingInfo></BettingInfo>
       <div className={styles.actions_container}>
-        <BetAction action="UP"></BetAction>
-        <BetAction action="DOWN"></BetAction>
+        <BetAction></BetAction>
       </div>
     </div>
   );
