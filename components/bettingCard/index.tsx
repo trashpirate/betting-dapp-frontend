@@ -172,7 +172,7 @@ export default function BettingCard({ prizePool, ratioUp, ratioDown }: PoolProps
         </div>
         <div className={style.container_price}>
           <div className={style.current_price_container}>
-            <p>Current Price</p>
+            <p>Current LICK Price</p>
             <div className={style.current_price_inner}>
               <div className={style.current_price} style={getPriceColorStyle()}>
                 {currentPrice !== null ? <h3>${currentPrice.toFixed(8)}</h3> : <p>----</p>}
@@ -195,7 +195,7 @@ export default function BettingCard({ prizePool, ratioUp, ratioDown }: PoolProps
 
           {initialPrice !== null ? (
             <div className={style.initial_price}>
-              <div>Locked Price:</div>
+              <div>Locked LICK Price:</div>
               <div>${initialPrice.toFixed(8)}</div>
             </div>
           ) : (
