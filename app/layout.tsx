@@ -55,7 +55,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <WagmiConfig config={config}>
         <ConnectKitProvider mode="dark">
           <body>
-            <div style={{ display: "flex", flexDirection: "column", minHeight: "105vh" }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                minHeight: "105vh",
+                backgroundImage: "url(petlfg_betting_bg_2.jpg)",
+                backgroundSize: "cover",
+                backgroundPositionX: "center",
+              }}
+            >
               <Navbar />
               <div style={{ flexGrow: 1 }}>{children}</div>
               <Footer />
