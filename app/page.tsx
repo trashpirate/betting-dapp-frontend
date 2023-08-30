@@ -9,7 +9,7 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <h3 className={styles.notice}>V1.1 BETA</h3>
-      <TokenPrice></TokenPrice>
+
       <CountdownTimer />
       <Betting></Betting>
     </main>

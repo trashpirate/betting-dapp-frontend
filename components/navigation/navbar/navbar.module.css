@@ -23,6 +23,7 @@
 
 @media (max-width: 420px) {
   .navbar {
+    width: 90%;
     justify-content: center;
   }
 
@@ -38,3 +39,25 @@
   padding: 0px;
 }
 }
+
+@media (max-width: 850px) {
+  .navbar {
+    width: 90%;
+    justify-content: center;
+    flex-direction: column-reverse;
+  }
+
+  .navbar_menu {
+    margin-top: 20px;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .navbar_menu a{
+  /* padding-right: 20px; */
+  min-width: 150px;
+  margin: 5px auto 10px auto;
+  padding: 0px;
+}
+}
+

@@ -1,7 +1,11 @@
 .timer_container {
   text-align: center;
   margin: 5px auto;
-  max-width: 80%;
+  width: 90%;
+  max-width: 400px;
+  background-color: #fff8;
+  padding: 40px 20px;
+  border-radius: 20px;
 }
 
 .countdown {
