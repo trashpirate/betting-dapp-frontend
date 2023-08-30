@@ -1,11 +1,11 @@
 .main {
   /* padding: 2rem 0; */
   justify-self: center;
-  margin: 30px auto;
+  margin: 20px auto;
 }
 
 .notice {
   font-weight: 400;
   text-align: center;
-  margin: 5px auto 50px auto;
+  margin: 5px auto 40px auto;
 }

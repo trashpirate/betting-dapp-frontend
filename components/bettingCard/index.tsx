@@ -1,9 +1,15 @@
 import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
-import style from "./tokenPrice.module.css";
+import style from "./bettingCard.module.css";
 import { FaArrowUp, FaArrowDown } from "react-icons/fa";
 
-export default function TokenPrice() {
+interface PoolProps {
+  prizePool: number | null;
+  ratioUp: number | null;
+  ratioDown: number | null;
+}
+
+export default function BettingCard({ prizePool, ratioUp, ratioDown }: PoolProps) {
   const [currentPrice, setCurrentPrice] = useState<number | null>(null);
   const [initialPrice, setInitialPrice] = useState<number | null>(null);
 
@@ -45,12 +51,14 @@ export default function TokenPrice() {
         });
     });
 
+    // Handle exception
     socket.on("exception", function (data) {
       console.log("event", data);
       setInitialPrice(null);
       setCurrentPrice(null);
     });
 
+    // Handle disconnection
     socket.on("disconnect", function () {
       console.log("Disconnected");
     });
@@ -64,6 +72,7 @@ export default function TokenPrice() {
   const priceDiff =
     currentPrice != null && initialPrice != null ? currentPrice - initialPrice : null;
 
+  // define dynamic design functions
   const getSmallArrow = (priceDiff: number | null) => {
     if (priceDiff != null && priceDiff > 0) {
       return <FaArrowUp style={{ transform: `translate(0, 3px)` }} />;
@@ -146,13 +155,18 @@ export default function TokenPrice() {
     }
   };
 
+  // return component
   return (
     <div className={style.container}>
-      <h1>$LICK Price</h1>
       <div className={style.container_card}>
         <div className={style.arrow_up} style={getArrowUpStyle()}>
           <div className={style.text_up}>
             <h3>UP</h3>
+            {typeof ratioUp === "number" && ratioUp > 0 ? (
+              <div>{`${ratioUp?.toFixed(1)}x`}</div>
+            ) : (
+              <div>1x</div>
+            )}
           </div>
         </div>
         <div className={style.container_price}>
@@ -186,9 +200,25 @@ export default function TokenPrice() {
           ) : (
             <p>Locked Price: ---</p>
           )}
+          {prizePool !== null ? (
+            <div className={style.prizepool}>
+              <div>Prize Pool:</div>
+              <div>
+                {prizePool}
+                {` LICK`}
+              </div>
+            </div>
+          ) : (
+            <div>Prize Pool: ---</div>
+          )}
         </div>
         <div className={style.arrow_down} style={getArrowDownStyle()}>
           <div className={style.text_down}>
+            {typeof ratioDown === "number" && ratioDown > 0 ? (
+              <div>{`${ratioDown?.toFixed(1)}x`}</div>
+            ) : (
+              <div>1x</div>
+            )}
             <h3>DOWN</h3>
           </div>
         </div>

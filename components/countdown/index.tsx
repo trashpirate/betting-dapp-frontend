@@ -92,6 +92,7 @@ export default function CountdownTimer() {
 
   return (
     <div className={style.timer_container}>
+      <h1>CURRENT ROUND</h1>
       <h2>
         Round Ending:
         <br />

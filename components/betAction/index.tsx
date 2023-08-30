@@ -1,15 +1,6 @@
 import styles from "./betAction.module.css";
-
-import { tokenABI } from "../../assets/LICK_polygon";
 import { useState } from "react";
-import { useContractWrite, usePrepareContractWrite, useWaitForTransaction } from "wagmi";
-import { parseUnits } from "viem";
 import BetButton from "./betButton";
-
-const TOKEN_CONTRACT = process.env.NEXT_PUBLIC_TOKEN_CONTRACT as `0x${string}`;
-const UP_ADDRESS = process.env.NEXT_PUBLIC_UP_ADDRESS as `0x${string}`;
-const DOWN_ADDRESS = process.env.NEXT_PUBLIC_DOWN_ADDRESS as `0x${string}`;
-const NETWORK_SCAN = process.env.NEXT_PUBLIC_NETWORK_SCAN;
 
 export default function BetAction() {
   const [transferAmount, setTransferAmount] = useState("");
@@ -18,7 +9,7 @@ export default function BetAction() {
       <div className={styles.container_entry}>
         <form className={styles.form}>
           <label>
-            Enter Amount:
+            Enter LICK Amount:
             <input
               type="number"
               value={transferAmount}
