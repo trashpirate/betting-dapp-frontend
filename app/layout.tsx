@@ -46,12 +46,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         content="The LICK Betting Platform allows $LICK holders to use their tokens to place bets on future price movements."
         key="ogdesc"
       />
-      <meta property="og:url" content="https://petlfg.vercel.app" key="ogurl" />
+      <meta property="og:url" content="https://play.petlfg.com" key="ogurl" />
       <meta
         property="og:image"
         content="http://petlfg.com/wp-content/uploads/2023/08/petlfg_betting_wide.png"
         key="ogimage"
       />
+      <meta
+        property="og:image:url"
+        content="http://petlfg.com/wp-content/uploads/2023/08/petlfg_betting_wide.png"
+      />
+      <meta property="og:image:type" content="image/png" />
       <WagmiConfig config={config}>
         <ConnectKitProvider mode="dark">
           <body>

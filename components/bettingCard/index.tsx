@@ -164,9 +164,9 @@ export default function BettingCard({ prizePool, ratioUp, ratioDown }: PoolProps
           <div className={style.text_up}>
             <h3>UP</h3>
             {typeof ratioUp === "number" && ratioUp > 0 ? (
-              <div>{`${ratioUp?.toFixed(1)}x`}</div>
+              <div>{`${ratioUp?.toFixed(1)}x Payout`}</div>
             ) : (
-              <div>1x</div>
+              <div>1x Payout</div>
             )}
           </div>
         </div>
@@ -216,9 +216,9 @@ export default function BettingCard({ prizePool, ratioUp, ratioDown }: PoolProps
         <div className={style.arrow_down} style={getArrowDownStyle()}>
           <div className={style.text_down}>
             {typeof ratioDown === "number" && ratioDown > 0 ? (
-              <div>{`${ratioDown?.toFixed(1)}x`}</div>
+              <div>{`${ratioDown?.toFixed(1)}x Payout`}</div>
             ) : (
-              <div>1x</div>
+              <div>1x Payout</div>
             )}
             <h3>DOWN</h3>
           </div>
