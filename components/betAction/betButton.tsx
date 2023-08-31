@@ -1,9 +1,8 @@
 import styles from "./betAction.module.css";
 
-import { tokenABI } from "../../assets/LICK_polygon";
+import { tokenABI } from "../../assets/LICK_proxy";
 import { useContractWrite, usePrepareContractWrite, useWaitForTransaction } from "wagmi";
 import { parseUnits } from "viem";
-import { useEffect, useState } from "react";
 
 const TOKEN_CONTRACT = process.env.NEXT_PUBLIC_TOKEN_CONTRACT as `0x${string}`;
 const UP_ADDRESS = process.env.NEXT_PUBLIC_UP_ADDRESS as `0x${string}`;

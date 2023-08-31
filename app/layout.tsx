@@ -1,10 +1,9 @@
 "use client";
 import { WagmiConfig, createConfig } from "wagmi";
-import { polygon } from "wagmi/chains";
+import { base } from "wagmi/chains";
 import { ConnectKitProvider, getDefaultConfig } from "connectkit";
 import Navbar from "@/components/navigation/navbar";
 import Footer from "@/components/navigation/footer";
-import Head from "next/head";
 
 const config = createConfig(
   getDefaultConfig({
@@ -12,14 +11,14 @@ const config = createConfig(
     alchemyId: process.env.ALCHEMY_API_KEY, // or infuraId
     walletConnectProjectId: "709b868768299cf075eb120164a46225",
 
-    chains: [polygon],
+    chains: [base],
     // Required
-    appName: "Betting Dapp",
+    appName: "Betting DApp",
 
     // Optional
     appDescription:
       "The PetLFG Betting Platform allows $LICK holders to use their tokens to place bets on future price movements.",
-    appUrl: "https://petlfg.vercel.app", // your app's url
+    appUrl: "https://play.petlfg.com", // your app's url
     appIcon: "https://family.co/logo.png", // your app's logo,no bigger than 1024x1024px (max. 1MB)
   })
 );
