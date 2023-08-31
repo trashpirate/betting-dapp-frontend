@@ -84,14 +84,13 @@ export default function CountdownTimer() {
 
   return (
     <div className={style.timer_container}>
+      <h1>ROUND 2</h1>
       {initialTime === null || endTime === null ? (
         <div>
-          <h1>CURRENT ROUND</h1>
           <h2>Finished.</h2>
         </div>
       ) : (
         <div>
-          <h1>CURRENT ROUND</h1>
           <h2>
             Round Ending:
             <br />
