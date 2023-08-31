@@ -12,11 +12,11 @@ export default function Home() {
       <h1>WHAT DO YOU BET?</h1>
       <h4>Is $LICK going UP or DOWN?</h4>
       <Image
-        src="/betting_icon.png"
+        src="/betting_icon_0.png"
         width={225}
         height={125}
         alt="betting illustration petlfg"
-        style={{ margin: "20px auto", filter: "drop-shadow(0 0 0.2rem #a85507)" }}
+        style={{ margin: "20px auto", filter: "drop-shadow(0 0 0.1rem #a85507)" }}
       />
       <CountdownTimer />
       <Betting></Betting>
