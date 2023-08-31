@@ -1,9 +1,8 @@
 import styles from "./bettingInfo.module.css";
-import PieChart from "./chart";
 
-import { tokenABI } from "../../assets/LICK_polygon";
-import { useContractEvent, useContractReads } from "wagmi";
-import { formatUnits, parseUnits } from "viem";
+import { tokenABI } from "../../assets/LICK_proxy";
+import { useContractReads } from "wagmi";
+import { formatUnits } from "viem";
 import { useEffect, useState } from "react";
 import BettingCard from "../bettingCard";
 
