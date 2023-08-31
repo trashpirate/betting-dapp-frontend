@@ -1,5 +1,5 @@
 .container {
-  /* max-width: 90%; */
+  max-width: 90%;
   display: flex;
   align-items: center;
   min-width: 350px;
@@ -8,6 +8,13 @@
   padding: 20px;
   border-radius: 20px;
   vertical-align: baseline;
+}
+
+@media (max-width: 520px) {
+  .container {
+  max-width: 90%;
+  min-width: 100px;
+  }
 }
 
 .container_entry {

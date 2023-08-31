@@ -3,10 +3,11 @@ import style from "./countdown.module.css";
 import { io } from "socket.io-client";
 
 export default function CountdownTimer() {
-  const [remainingTime, setRemainingTime] = useState<number | null>(null);
+  const [bettingTime, setBettingTime] = useState<number | null>(null);
   const [initialTime, setInitialTime] = useState<number | null>(null);
   const [endTime, setEndTime] = useState<number | null>(null);
   const [endTimeString, setEndTimeString] = useState<Date | null>(null);
+  const [roundID, setRoundID] = useState<number | null>(null);
 
   useEffect(() => {
     fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/get-round`, {
@@ -14,7 +15,11 @@ export default function CountdownTimer() {
     })
       .then((res) => res.json())
       .then((data) => {
-        data.status == false ? setEndTime(null) : setEndTime(Number(new Date(data.end)) / 1000);
+        data.status === false ? setEndTime(null) : setEndTime(Number(new Date(data.end)) / 1000);
+        data.open === false
+          ? setBettingTime(0)
+          : setBettingTime(Number(new Date(data.close)) / 1000);
+        setRoundID(data.id);
       });
     const currentTime = Math.floor(Date.now() / 1000);
     setInitialTime(currentTime);
@@ -24,41 +29,66 @@ export default function CountdownTimer() {
 
     // Listen for the "bettingStarted" event
     socket.on("bettingStarted", () => {
-      console.log("Betting round has started");
+      console.log("Betting started");
       fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/get-round`, {
         credentials: "include",
       })
         .then((res) => res.json())
         .then((data) => {
-          data.status == false ? setEndTime(null) : setEndTime(Number(new Date(data.end)) / 1000);
+          data.status === false ? setEndTime(null) : setEndTime(Number(new Date(data.end)) / 1000);
+          data.open === false
+            ? setBettingTime(0)
+            : setBettingTime(Number(new Date(data.close)) / 1000);
+          setRoundID(data.id);
         });
       const currentTime = Math.floor(Date.now() / 1000);
       setInitialTime(currentTime);
     });
 
     socket.on("bettingEnded", () => {
-      console.log("Betting round has ended");
+      console.log("Betting has ended");
       fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/get-round`, {
         credentials: "include",
       })
         .then((res) => res.json())
         .then((data) => {
-          data.status == false ? setEndTime(null) : setEndTime(Number(new Date(data.end)) / 1000);
+          data.status === false ? setEndTime(null) : setEndTime(Number(new Date(data.end)) / 1000);
+          data.open === false
+            ? setBettingTime(0)
+            : setBettingTime(Number(new Date(data.close)) / 1000);
+          setRoundID(data.id);
         });
       const currentTime = Math.floor(Date.now() / 1000);
       setInitialTime(currentTime);
     });
 
-    if (initialTime !== null && endTime !== null) {
-      const utcSeconds = endTime;
+    socket.on("roundEnded", () => {
+      console.log("Round has ended");
+      fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/get-round`, {
+        credentials: "include",
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          data.status === false ? setEndTime(null) : setEndTime(Number(new Date(data.end)) / 1000);
+          data.open === false
+            ? setBettingTime(0)
+            : setBettingTime(Number(new Date(data.close)) / 1000);
+          setRoundID(data.id);
+        });
+      const currentTime = Math.floor(Date.now() / 1000);
+      setInitialTime(currentTime);
+    });
+
+    if (endTime !== null) {
       const d = new Date(0);
       d.setUTCSeconds(endTime);
       setEndTimeString(d);
-
+    }
+    if (bettingTime !== null) {
       const intervalId = setInterval(() => {
         const currentTime = Math.floor(Date.now() / 1000);
-        const timeLeft = endTime - currentTime;
-        setRemainingTime(timeLeft > 0 ? timeLeft : 0);
+        const timeLeft = bettingTime - currentTime;
+        setBettingTime(timeLeft > 0 ? timeLeft : 0);
       }, 1000);
 
       return () => {
@@ -84,26 +114,34 @@ export default function CountdownTimer() {
 
   return (
     <div className={style.timer_container}>
-      <h1>ROUND 2</h1>
-      {initialTime === null || endTime === null ? (
-        <div>
-          <h2>Finished.</h2>
-        </div>
+      {roundID === null ? (
+        <h1>NO ROUNDS ACTIVE</h1>
       ) : (
         <div>
-          <h2>
-            Round Ending:
-            <br />
-            {endTimeString == null ? "Not available." : endTimeString.toLocaleString()}
-          </h2>
-          <p className={style.notice}>
-            For bets to count enter them at least 1 hour before round end time.
-          </p>
-          <h2 className={style.countdown}>
-            Time Remaining: <br />
-            {formatTime(remainingTime || 0)}
-          </h2>
+          <h1>{`ROUND ${roundID}`}</h1>
+          {endTime === null ? (
+            <div>
+              <h2>Finished</h2>
+            </div>
+          ) : (
+            <div>
+              <h2>
+                Round Ending:
+                <br />
+                {endTimeString == null ? "Not available." : endTimeString.toLocaleString()}
+              </h2>
+            </div>
+          )}
         </div>
+      )}
+
+      {bettingTime == null ? (
+        <h2 className={style.countdown}>Betting Closed</h2>
+      ) : (
+        <h2 className={style.countdown}>
+          Betting Time Remaining: <br />
+          {bettingTime == null ? "Not available" : formatTime(bettingTime)}
+        </h2>
       )}
     </div>
   );

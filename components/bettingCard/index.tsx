@@ -25,8 +25,8 @@ export default function BettingCard({ prizePool, ratioUp, ratioDown }: PoolProps
     socket.on("events", function (data) {
       console.log("current", data.currentPrice);
       console.log("initial", data.initialPrice);
-      setCurrentPrice(data.currentPrice); // Update the received data
       setInitialPrice(data.initialPrice);
+      data.status == false ? setCurrentPrice(data.endPrice) : setCurrentPrice(data.currentPrice);
     });
 
     // Listen for the "bettingStarted" event
@@ -36,7 +36,10 @@ export default function BettingCard({ prizePool, ratioUp, ratioDown }: PoolProps
       })
         .then((res) => res.json())
         .then((data) => {
-          data.status == false ? setInitialPrice(null) : setInitialPrice(data.initialPrice);
+          setInitialPrice(data.initialPrice);
+          data.status == false
+            ? setCurrentPrice(data.endPrice)
+            : setCurrentPrice(data.currentPrice);
         });
     });
 
@@ -47,8 +50,10 @@ export default function BettingCard({ prizePool, ratioUp, ratioDown }: PoolProps
       })
         .then((res) => res.json())
         .then((data) => {
-          setCurrentPrice(data.currentPrice); // Update the received data
           setInitialPrice(data.initialPrice);
+          data.status == false
+            ? setCurrentPrice(data.endPrice)
+            : setCurrentPrice(data.currentPrice);
         });
     });
 

@@ -6,6 +6,7 @@ import { io } from "socket.io-client";
 export default function BetAction() {
   const [transferAmount, setTransferAmount] = useState("");
   const [bettingAllowed, setBettingAllowed] = useState<boolean>(false);
+  const [roundID, setRoundID] = useState<number | null>(null);
 
   useEffect(() => {
     const socket = io(`${process.env.NEXT_PUBLIC_BASE_URL}`);
@@ -18,7 +19,8 @@ export default function BetAction() {
 
     // Listen for the "bettingStarted" event
     socket.on("events", function (data) {
-      setBettingAllowed(data.status);
+      setBettingAllowed(data.open);
+      setRoundID(data.id);
     });
 
     // Listen for the "bettingStarted" event
@@ -28,7 +30,8 @@ export default function BetAction() {
       })
         .then((res) => res.json())
         .then((data) => {
-          setBettingAllowed(data.status);
+          setBettingAllowed(data.open);
+          setRoundID(data.id);
         });
     });
 
@@ -39,29 +42,31 @@ export default function BetAction() {
       })
         .then((res) => res.json())
         .then((data) => {
-          setBettingAllowed(data.status);
+          setBettingAllowed(data.open);
+          setRoundID(data.id);
         });
     });
 
     socket.on("exception", function (data) {
       console.log("event", data);
-      setBettingAllowed(data.status);
+      setBettingAllowed(data.open);
+      setRoundID(data.id);
     });
 
     // Clean up the socket connection when the component unmounts
     return () => {
       socket.disconnect();
     };
-  }, [bettingAllowed]);
+  }, [bettingAllowed, roundID]);
 
   return (
     <div className={styles.container}>
-      {!bettingAllowed && (
+      {(!bettingAllowed || roundID == null) && (
         <h2 className={styles.container_buttons} style={{ margin: "auto" }}>
-          No Bets Accepted!
+          Betting Closed!
         </h2>
       )}
-      {bettingAllowed && (
+      {bettingAllowed && roundID != null && (
         <div className={styles.container_entry}>
           <form className={styles.form}>
             <label>
