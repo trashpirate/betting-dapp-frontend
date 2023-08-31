@@ -50,7 +50,7 @@ export default function BetButton(params: { action: string; transferAmount: stri
           Successfully Submitted!
           <a target={"_blank"} href={`${NETWORK_SCAN}/${data?.hash}`}>
             <div>
-              <p>View on Polygonscan</p>
+              <p>View on BaseScan</p>
             </div>
           </a>
         </div>
