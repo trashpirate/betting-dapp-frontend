@@ -9,8 +9,8 @@ export default function Home() {
   return (
     <main className={styles.main}>
       <h3 className={styles.notice}>V1.1 BETA</h3>
-      <h1>WHAT DO YOU BET?</h1>
-      <h4>Is $LICK going UP or DOWN?</h4>
+      <h1>PLACE YOUR BET</h1>
+      <h4>Will $LICK price go UP or DOWN?</h4>
       <Image
         src="/betting_icon_0.png"
         width={225}
