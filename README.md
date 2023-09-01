@@ -2,7 +2,7 @@
 ![Version](https://img.shields.io/badge/version-1.1.0-blue.svg?cacheSeconds=2592000)
 [![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](https://github.com/trashpirate/betting-dapp-frontend#readme)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/trashpirate/betting-dapp-frontend/graphs/commit-activity)
-[![License: MIT](https://img.shields.io/github/license/trashpirate/LICK Betting DApp)](https://github.com/trashpirate/betting-dapp-frontend/blob/master/LICENSE)
+[![License: MIT](https://img.shields.io/github/license/trashpirate/betting-dapp-frontend)](https://github.com/trashpirate/betting-dapp-frontend/blob/master/LICENSE)
 [![Twitter: N0\_crypto](https://img.shields.io/twitter/follow/N0\_crypto.svg?style=social)](https://twitter.com/N0\_crypto)
 
 > This is the first iteration of a DApp that allows users to place bets on future price movement using an ERC20 token. A betting round is initiated by an administrator in the backend who determines the round end date and the expiration of the betting period. At the beginning of each round the price of a specific token (defined in the backend) is locked and then compared to the price at the end of the round. Users can place bets while the betting period is open which typically ends 1 hour or more before the betting round. 
