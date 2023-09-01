@@ -27,6 +27,12 @@ npm install
 npm run start
 ```
 
+## Test
+
+```sh
+npm run dev
+```
+
 ## Author
 
 👤 **Nadina Oates**
