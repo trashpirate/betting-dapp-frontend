@@ -1,7 +1,7 @@
 # Welcome to LICK Betting DApp 👋
 ![Version](https://img.shields.io/badge/version-1.1.0-blue.svg?cacheSeconds=2592000)
-![Static Badge](https://img.shields.io/badge/npm%2C%20v9.8.1)
 ![Static Badge](https://img.shields.io/badge/node-v9.8.1-blue)
+![Static Badge](https://img.shields.io/badge/npm-v18.17.0-blue)
 [![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)](https://github.com/trashpirate/betting-dapp-frontend#readme)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/trashpirate/betting-dapp-frontend/graphs/commit-activity)
 [![License: MIT](https://img.shields.io/github/license/trashpirate/betting-dapp-frontend)](https://github.com/trashpirate/betting-dapp-frontend/blob/master/LICENSE)
