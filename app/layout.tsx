@@ -11,15 +11,18 @@ const config = createConfig(
     alchemyId: process.env.ALCHEMY_API_KEY, // or infuraId
     walletConnectProjectId: "709b868768299cf075eb120164a46225",
 
+    // configured chain
     chains: [base],
+
     // Required
     appName: "Betting DApp",
 
     // Optional
     appDescription:
-      "The PetLFG Betting Platform allows $LICK holders to use their tokens to place bets on future price movements.",
+      "The LICK Betting Platform allows $LICK holders to use their tokens to place bets on future price movements.",
     appUrl: "https://play.petlfg.com", // your app's url
-    appIcon: "https://family.co/logo.png", // your app's logo,no bigger than 1024x1024px (max. 1MB)
+    appIcon:
+      "http://petlfg.com/wp-content/uploads/2023/05/cropped-cropped-petlfg_logo_official_round_@256-1.png", // your app's logo,no bigger than 1024x1024px (max. 1MB)
   })
 );
 
