@@ -13,23 +13,22 @@
 
 ### ✨ [Launch DApp](https://play.petlfg.com)
 
-## Install
+## Installation
 
-```sh
-npm install
+```bash
+$ npm install
 ```
 
-## Usage
+## Running the app
 
-```sh
-npm run start
+```bash
+# development
+$ npm run dev
+
+# production mode
+$ npm run start
 ```
 
-## Test
-
-```sh
-npm run dev
-```
 
 ## Author
 
