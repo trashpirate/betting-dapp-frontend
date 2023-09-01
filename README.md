@@ -11,9 +11,7 @@ The user can connect their wallets which directs them to the correct blockchain.
 
 For this application to work you need also to install and run the backend (NestJS API): https://github.com/trashpirate/betting-dapp-backend
 
-### 🏠 [Homepage](https://play.petlfg.com)
-
-### ✨ [Demo](https://play.petlfg.com)
+### ✨ [Launch DApp](https://play.petlfg.com)
 
 ## Install
 
